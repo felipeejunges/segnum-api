@@ -1,10 +1,14 @@
 package br.com.segnum.api.resources;
 
 import br.com.segnum.api.domain.Location;
+import br.com.segnum.api.domain.Location;
 import br.com.segnum.api.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -15,33 +19,35 @@ public class LocationResource {
     LocationService service;
 
     @RequestMapping(method= RequestMethod.POST)
-    public String register(@RequestBody Location obj) {
+    public ResponseEntity<Void> register(@RequestBody Location obj) {
         service.insert(obj);
-        return "sucesso";
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 
     @RequestMapping(value="{id}", method= RequestMethod.PUT)
-    public String update(@RequestBody Location obj, @PathVariable int id) {
+    public ResponseEntity<Void> update(@RequestBody Location obj, @PathVariable int id) {
         service.update(obj);
-        return "sucesso";
+        return ResponseEntity.noContent().build();
     }
 
     @RequestMapping(value="{id}", method= RequestMethod.GET)
-    public Location find(@PathVariable int id) {
+    public ResponseEntity<?> find(@PathVariable int id) {
         Location obj = service.find(id);
-        return obj;
+        return ResponseEntity.ok().body(obj);
     }
 
     @RequestMapping(method= RequestMethod.DELETE)
-    public Location delete(@PathVariable int id) {
+    public ResponseEntity<Void> delete(@PathVariable int id) {
         Location obj = service.delete(id);
-        return obj;
+        return ResponseEntity.noContent().build();
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public List<Location> findAll(@PathVariable int id) {
+    public ResponseEntity<List<Location>> findAll(@PathVariable int id) {
         List<Location> list = service.findAll();
-        return list;
+        return ResponseEntity.ok().body(list);
     }
 
 }

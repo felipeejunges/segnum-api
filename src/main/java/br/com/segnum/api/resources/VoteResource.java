@@ -1,10 +1,14 @@
 package br.com.segnum.api.resources;
 
 import br.com.segnum.api.domain.Vote;
+import br.com.segnum.api.domain.Vote;
 import br.com.segnum.api.services.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -15,33 +19,35 @@ public class VoteResource {
     VoteService service;
 
     @RequestMapping(method= RequestMethod.POST)
-    public String register(@RequestBody Vote obj) {
+    public ResponseEntity<Void> register(@RequestBody Vote obj) {
         service.insert(obj);
-        return "sucesso";
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 
     @RequestMapping(value="{id}", method= RequestMethod.PUT)
-    public String update(@RequestBody Vote obj, @PathVariable int id) {
+    public ResponseEntity<Void> update(@RequestBody Vote obj, @PathVariable int id) {
         service.update(obj);
-        return "sucesso";
+        return ResponseEntity.noContent().build();
     }
 
     @RequestMapping(value="{id}", method= RequestMethod.GET)
-    public Vote find(@PathVariable int id) {
+    public ResponseEntity<?> find(@PathVariable int id) {
         Vote obj = service.find(id);
-        return obj;
+        return ResponseEntity.ok().body(obj);
     }
 
     @RequestMapping(method= RequestMethod.DELETE)
-    public Vote delete(@PathVariable int id) {
+    public ResponseEntity<Void> delete(@PathVariable int id) {
         Vote obj = service.delete(id);
-        return obj;
+        return ResponseEntity.noContent().build();
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public List<Vote> findAll(@PathVariable int id) {
+    public ResponseEntity<List<Vote>> findAll(@PathVariable int id) {
         List<Vote> list = service.findAll();
-        return list;
+        return ResponseEntity.ok().body(list);
     }
 
 }

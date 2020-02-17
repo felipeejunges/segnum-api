@@ -1,10 +1,14 @@
 package br.com.segnum.api.resources;
 
 import br.com.segnum.api.domain.User;
+import br.com.segnum.api.domain.User;
 import br.com.segnum.api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -15,33 +19,35 @@ public class UserResource {
     UserService service;
 
     @RequestMapping(method= RequestMethod.POST)
-    public String register(@RequestBody User obj) {
+    public ResponseEntity<Void> register(@RequestBody User obj) {
         service.insert(obj);
-        return "sucesso";
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 
     @RequestMapping(value="{id}", method= RequestMethod.PUT)
-    public String update(@RequestBody User obj, @PathVariable int id) {
+    public ResponseEntity<Void> update(@RequestBody User obj, @PathVariable int id) {
         service.update(obj);
-        return "sucesso";
+        return ResponseEntity.noContent().build();
     }
 
     @RequestMapping(value="{id}", method= RequestMethod.GET)
-    public User find(@PathVariable int id) {
+    public ResponseEntity<?> find(@PathVariable int id) {
         User obj = service.find(id);
-        return obj;
+        return ResponseEntity.ok().body(obj);
     }
 
     @RequestMapping(method= RequestMethod.DELETE)
-    public User delete(@PathVariable int id) {
+    public ResponseEntity<Void> delete(@PathVariable int id) {
         User obj = service.delete(id);
-        return obj;
+        return ResponseEntity.noContent().build();
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public List<User> findAll(@PathVariable int id) {
+    public ResponseEntity<List<User>> findAll(@PathVariable int id) {
         List<User> list = service.findAll();
-        return list;
+        return ResponseEntity.ok().body(list);
     }
 
 }
