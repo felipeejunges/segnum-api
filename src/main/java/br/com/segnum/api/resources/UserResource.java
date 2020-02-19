@@ -1,8 +1,10 @@
 package br.com.segnum.api.resources;
 
 import br.com.segnum.api.domain.User;
-import br.com.segnum.api.domain.User;
+import br.com.segnum.api.domain.enums.Profile;
+import br.com.segnum.api.dto.UserDTO;
 import br.com.segnum.api.dto.UserNewDTO;
+import br.com.segnum.api.dto.ChangeProfileDTO;
 import br.com.segnum.api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value="user")
@@ -39,6 +42,7 @@ public class UserResource {
     @RequestMapping(value="{id}", method= RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable int id) {
         User obj = service.find(id);
+        UserDTO dto = new UserDTO(obj);
         return ResponseEntity.ok().body(obj);
     }
 
@@ -49,9 +53,28 @@ public class UserResource {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public ResponseEntity<List<User>> findAll(@PathVariable int id) {
+    public ResponseEntity<List<UserDTO>> findAll(@PathVariable int id) {
         List<User> list = service.findAll();
-        return ResponseEntity.ok().body(list);
+        List<UserDTO> listDTO = list.stream()
+                .map(obj -> new UserDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDTO);
+    }
+
+    @RequestMapping(value="{id}/profile/grant", method= RequestMethod.PUT)
+    public ResponseEntity<Void> grantProfile(@RequestBody ChangeProfileDTO dto, @PathVariable int id) {
+        User obj = service.find(id);
+        obj.getProfiles().add(Profile.toEnum(dto.getProfileId()));
+        service.update(obj);
+        return ResponseEntity.noContent().build();
+    }
+
+
+    @RequestMapping(value="{id}/profile/remove", method= RequestMethod.PUT)
+    public ResponseEntity<Void> removeProfile(@RequestBody ChangeProfileDTO dto, @PathVariable int id) {
+        User obj = service.find(id);
+        obj.getProfiles().remove(Profile.toEnum(dto.getProfileId()));
+        service.update(obj);
+        return ResponseEntity.noContent().build();
     }
 
 }

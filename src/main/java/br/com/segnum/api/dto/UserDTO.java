@@ -1,13 +1,20 @@
 package br.com.segnum.api.dto;
 
+import br.com.segnum.api.domain.User;
+import br.com.segnum.api.domain.enums.Profile;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 public class UserDTO {
 
+    @NotEmpty(message="Preenchimento obrigatório")
+    private int id;
     @NotEmpty(message="Preenchimento obrigatório")
     @Length(min=5, max=80, message="O tamanho deve ser entre 5 e 80 caracteres")
     private String name;
@@ -16,18 +23,35 @@ public class UserDTO {
     private String email;
     private String phone;
     private Date birthday;
-    @NotEmpty(message="Preenchimento obrigatório")
-    private String password;
+
+    private List<ProfileDTO> profiles = new ArrayList<>();
 
     public UserDTO() {
     }
 
-    public UserDTO(String name, String email, String phone, Date birthday, String password) {
+    public UserDTO(int id, String name, String email, String phone, Date birthday) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.birthday = birthday;
-        this.password = password;
+    }
+
+    public UserDTO(int id, String name, String email, String phone, Date birthday, List<ProfileDTO> profiles) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.birthday = birthday;
+        this.profiles = profiles;
+    }
+
+    public UserDTO(User user) {
+        this.id = user.getId();
+        this.name = user.getName();
+        this.phone = user.getPhone();
+        this.birthday = user.getBirthday();
+        this.profilesEnumToDto(user.getProfiles());
     }
 
     public String getName() {
@@ -62,11 +86,17 @@ public class UserDTO {
         this.birthday = birthday;
     }
 
-    public String getPassword() {
-        return password;
+    public List<ProfileDTO> getProfiles() {
+        return profiles;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setProfiles(List<ProfileDTO> profiles) {
+        this.profiles = profiles;
+    }
+
+    public void profilesEnumToDto(Set<Profile> enumProfiles) {
+        enumProfiles.forEach(p -> {
+            this.profiles.add(new ProfileDTO(p.getCode(), p.getDescription()));
+        });
     }
 }
