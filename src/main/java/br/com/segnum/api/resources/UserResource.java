@@ -2,9 +2,9 @@ package br.com.segnum.api.resources;
 
 import br.com.segnum.api.domain.User;
 import br.com.segnum.api.domain.enums.Profile;
-import br.com.segnum.api.dto.UserDTO;
-import br.com.segnum.api.dto.UserNewDTO;
-import br.com.segnum.api.dto.ChangeProfileDTO;
+import br.com.segnum.api.dto.user.UserDTO;
+import br.com.segnum.api.dto.user.UserNewDTO;
+import br.com.segnum.api.dto.user.ChangeProfileDTO;
 import br.com.segnum.api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

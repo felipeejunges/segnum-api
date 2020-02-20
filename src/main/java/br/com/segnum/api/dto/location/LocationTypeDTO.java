@@ -1,26 +1,26 @@
-package br.com.segnum.api.dto;
+package br.com.segnum.api.dto.location;
 
-import br.com.segnum.api.domain.enums.Profile;
+import br.com.segnum.api.domain.enums.LocationType;
 
 import javax.validation.constraints.NotEmpty;
 
-public class ProfileDTO {
+public class LocationTypeDTO {
 
     @NotEmpty(message="Preenchimento obrigatório")
     private int id;
     private String name;
 
-    public ProfileDTO() {
+    public LocationTypeDTO() {
     }
 
-    public ProfileDTO(int id, String name) {
+    public LocationTypeDTO(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public ProfileDTO(Profile profile) {
-        this.id = profile.getCode();
-        this.name = profile.getDescription();
+    public LocationTypeDTO(LocationType type) {
+        this.id = type.getCode();
+        this.name = type.name();
     }
 
     public int getId() {
@@ -38,4 +38,6 @@ public class ProfileDTO {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

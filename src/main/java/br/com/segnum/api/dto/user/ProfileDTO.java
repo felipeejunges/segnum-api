@@ -1,26 +1,26 @@
-package br.com.segnum.api.dto;
+package br.com.segnum.api.dto.user;
 
-import br.com.segnum.api.domain.enums.EventSource;
+import br.com.segnum.api.domain.enums.Profile;
 
 import javax.validation.constraints.NotEmpty;
 
-public class EventSourceDTO {
+public class ProfileDTO {
 
     @NotEmpty(message="Preenchimento obrigatório")
     private int id;
     private String name;
 
-    public EventSourceDTO() {
+    public ProfileDTO() {
     }
 
-    public EventSourceDTO(int id, String name) {
+    public ProfileDTO(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public EventSourceDTO(EventSource source) {
-        this.id = source.getCode();
-        this.name = source.name();
+    public ProfileDTO(Profile profile) {
+        this.id = profile.getCode();
+        this.name = profile.getDescription();
     }
 
     public int getId() {

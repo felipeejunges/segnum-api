@@ -1,4 +1,4 @@
-package br.com.segnum.api.dto;
+package br.com.segnum.api.dto.user;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -70,4 +70,6 @@ public class UserNewDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }

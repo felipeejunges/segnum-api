@@ -1,4 +1,4 @@
-package br.com.segnum.api.dto;
+package br.com.segnum.api.dto.user;
 
 import java.io.Serializable;
 

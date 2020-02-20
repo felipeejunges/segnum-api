@@ -1,6 +1,6 @@
 package br.com.segnum.api.security;
 
-import br.com.segnum.api.dto.CredentialsDTO;
+import br.com.segnum.api.dto.user.CredentialsDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

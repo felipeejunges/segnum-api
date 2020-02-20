@@ -1,4 +1,4 @@
-package br.com.segnum.api.dto;
+package br.com.segnum.api.dto.user;
 
 import br.com.segnum.api.domain.User;
 import br.com.segnum.api.domain.enums.Profile;
@@ -52,6 +52,14 @@ public class UserDTO {
         this.phone = user.getPhone();
         this.birthday = user.getBirthday();
         this.profilesEnumToDto(user.getProfiles());
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

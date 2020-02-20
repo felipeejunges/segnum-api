@@ -1,26 +1,28 @@
-package br.com.segnum.api.dto;
+package br.com.segnum.api.dto.event;
 
-import br.com.segnum.api.domain.enums.LocationType;
+import br.com.segnum.api.domain.Event;
+import br.com.segnum.api.domain.User;
 
 import javax.validation.constraints.NotEmpty;
 
-public class LocationTypeDTO {
+public class EventSimplifyDTO {
 
     @NotEmpty(message="Preenchimento obrigatório")
     private int id;
+    @NotEmpty(message="Preenchimento obrigatório")
     private String name;
 
-    public LocationTypeDTO() {
+    public EventSimplifyDTO() {
     }
 
-    public LocationTypeDTO(int id, String name) {
+    public EventSimplifyDTO(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public LocationTypeDTO(LocationType type) {
-        this.id = type.getCode();
-        this.name = type.name();
+    public EventSimplifyDTO(Event event) {
+        this.id = event.getId();
+        this.name = event.getName();
     }
 
     public int getId() {
