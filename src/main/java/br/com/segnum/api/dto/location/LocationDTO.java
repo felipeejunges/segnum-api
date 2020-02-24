@@ -1,6 +1,7 @@
 package br.com.segnum.api.dto.location;
 
 import br.com.segnum.api.domain.Event;
+import br.com.segnum.api.domain.Location;
 import br.com.segnum.api.domain.User;
 import br.com.segnum.api.dto.event.EventSimplifyDTO;
 import br.com.segnum.api.dto.user.UserSimplifyDTO;
@@ -56,6 +57,16 @@ public class LocationDTO {
         this.ly = ly;
         this.type = type;
         this.event = new EventSimplifyDTO(event);
+    }
+
+    public LocationDTO(Location obj) {
+        this.id = obj.getId();
+        this.name = obj.getName();
+        this.lx = obj.getLx();
+        this.ly = obj.getLy();
+        this.type = new LocationTypeDTO(obj.getType());
+        if (obj.getEvent() != null) this.event = new EventSimplifyDTO(obj.getEvent());
+        if (obj.getUser() != null) this.user = new UserSimplifyDTO(obj.getUser());
     }
 
     public String getName() {

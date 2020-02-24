@@ -1,10 +1,16 @@
 package br.com.segnum.api.resources;
 
+import br.com.segnum.api.domain.Event;
+import br.com.segnum.api.domain.Location;
 import br.com.segnum.api.domain.User;
 import br.com.segnum.api.domain.enums.Profile;
+import br.com.segnum.api.dto.event.EventDTO;
+import br.com.segnum.api.dto.location.LocationDTO;
 import br.com.segnum.api.dto.user.UserDTO;
 import br.com.segnum.api.dto.user.UserNewDTO;
 import br.com.segnum.api.dto.user.ChangeProfileDTO;
+import br.com.segnum.api.repositories.EventRepository;
+import br.com.segnum.api.repositories.LocationRepository;
 import br.com.segnum.api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +28,12 @@ public class UserResource {
 
     @Autowired
     UserService service;
+
+    @Autowired
+    LocationRepository locationRepository;
+
+    @Autowired
+    EventRepository eventRepository;
 
     @RequestMapping(method= RequestMethod.POST)
     public ResponseEntity<Void> register(@RequestBody UserNewDTO dto) {
@@ -75,6 +88,30 @@ public class UserResource {
         obj.getProfiles().remove(Profile.toEnum(dto.getProfileId()));
         service.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value="{id}/locations", method= RequestMethod.GET)
+    public ResponseEntity<List<LocationDTO>> myLocations(@PathVariable int id) {
+        User user = service.find(id);
+
+        List<Location> locations = locationRepository.findByUser(user);
+
+        List<LocationDTO> locationsDTO = locations.stream()
+                .map(obj -> new LocationDTO(obj)).collect(Collectors.toList());
+
+        return ResponseEntity.ok().body(locationsDTO);
+    }
+
+    @RequestMapping(value="{id}/events", method= RequestMethod.GET)
+    public ResponseEntity<List<EventDTO>> myEvents(@PathVariable int id) {
+        User user = service.find(id);
+
+        List<Event> events = eventRepository.findByUser(user);
+
+        List<EventDTO> eventsDTO = events.stream()
+                .map(obj -> new EventDTO(obj)).collect(Collectors.toList());
+
+        return ResponseEntity.ok().body(eventsDTO);
     }
 
 }

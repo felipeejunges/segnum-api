@@ -1,7 +1,7 @@
 package br.com.segnum.api.resources;
 
 import br.com.segnum.api.domain.Location;
-import br.com.segnum.api.domain.Location;
+import br.com.segnum.api.dto.location.LocationNewDTO;
 import br.com.segnum.api.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +19,24 @@ public class LocationResource {
     LocationService service;
 
     @RequestMapping(method= RequestMethod.POST)
-    public ResponseEntity<Void> register(@RequestBody Location obj) {
+    public ResponseEntity<Void> insert(@RequestBody Location obj) {
         service.insert(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+    @RequestMapping(value="user/{userId}", method= RequestMethod.POST)
+    public ResponseEntity<Void> insertUserLocation(@RequestBody LocationNewDTO dto, @PathVariable int userId) {
+        Location obj = service.insertUserLocation(dto, userId);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+    @RequestMapping(value="event/{eventId}", method= RequestMethod.POST)
+    public ResponseEntity<Void> inserEventLocation(@RequestBody LocationNewDTO dto, @PathVariable int eventId) {
+        Location obj = service.insertEventLocation(dto, eventId);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();

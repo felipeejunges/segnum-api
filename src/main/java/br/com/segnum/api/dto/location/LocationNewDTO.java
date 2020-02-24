@@ -2,7 +2,7 @@ package br.com.segnum.api.dto.location;
 
 import javax.validation.constraints.NotEmpty;
 
-public class LocationEventNewDTO {
+public class LocationNewDTO {
 
     @NotEmpty(message="Preenchimento obrigatório")
     private int id;
@@ -10,17 +10,17 @@ public class LocationEventNewDTO {
     private String name;
     private String lx;
     private String ly;
-    private int eventId;
+    private int type;
 
-    public LocationEventNewDTO() {
+    public LocationNewDTO() {
     }
 
-    public LocationEventNewDTO(int id, String name, String lx, String ly, int eventId) {
+    public LocationNewDTO(int id, String name, String lx, String ly, int type) {
         this.id = id;
         this.name = name;
         this.lx = lx;
         this.ly = ly;
-        this.eventId = eventId;
+        this.type = type;
     }
 
     public String getName() {
@@ -55,13 +55,12 @@ public class LocationEventNewDTO {
         this.ly = ly;
     }
 
-    public int getEventId() {
-        return eventId;
+    public int getType() {
+        return type;
     }
 
-    public void setEventId(int eventId) {
-        this.eventId = eventId;
+    public void setType(int type) {
+        this.type = type;
     }
-
 
 }
