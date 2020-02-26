@@ -2,52 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ecdcea86-4b86-4f5e-ad16-06ef3c01da00" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/dto/location/LocationSimplifyDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Segnum-API.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Segnum-API.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/domain/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/domain/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/dto/event/EventDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/dto/event/EventDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/resources/CommentaryResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/resources/CommentaryResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/resources/EventResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/resources/EventResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/resources/LocationResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/resources/LocationResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/resources/UserResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/resources/UserResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/resources/VoteResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/resources/VoteResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/services/helpers/DBService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/segnum/api/services/helpers/DBService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/Segnum-API.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-prod.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-test.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/SegnumApiApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/config/DevConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/config/ProdConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/config/SecurityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/config/TestConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/domain/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/domain/UserLocation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/domain/enums/EventSource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/domain/enums/LocationType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/domain/enums/Profile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/dto/CredentialsDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/repositories/UserLocationRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/repositories/UserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/resources/EventResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/security/JWTAuthenticationFilter$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/security/JWTAuthenticationFilter$JWTAuthenticationFailureHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/security/JWTAuthenticationFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/security/JWTUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/security/UserSS.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/services/AbstractEmailService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/services/DBService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/services/EmailService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/services/MockEmailService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/services/SMTPEmailService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/services/UserDetailsServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/services/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/segnum/api/services/validation/utils/BR.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/br/com/segnum/api/SegnumApiApplicationTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +112,7 @@
       <workItem from="1582559617226" duration="2660000" />
       <workItem from="1582563357785" duration="126000" />
       <workItem from="1582730801588" duration="3869000" />
+      <workItem from="1582735444541" duration="28000" />
     </task>
     <servers />
   </component>
@@ -261,12 +217,12 @@
     <state width="938" height="281" key="GridCell.Tab.1.right/-1366.191.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1581735686421" />
     <state width="856" height="178" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1581787464246" />
     <state width="1554" height="239" key="GridCell.Tab.1.right/1366.0.1600.900/0.27.1366.704@1366.0.1600.900" timestamp="1582735367993" />
-    <state x="1912" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1582730807461">
+    <state x="1912" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1582735444492">
       <screen x="1366" y="0" width="1600" height="900" />
     </state>
     <state x="655" y="344" key="com.intellij.ide.util.TipDialog/-1366.191.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1581997279031" />
     <state x="466" y="241" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1581788682420" />
-    <state x="1912" y="298" key="com.intellij.ide.util.TipDialog/1366.0.1600.900/0.27.1366.704@1366.0.1600.900" timestamp="1582730807461" />
+    <state x="1912" y="298" key="com.intellij.ide.util.TipDialog/1366.0.1600.900/0.27.1366.704@1366.0.1600.900" timestamp="1582735444492" />
     <state x="34" y="0" width="1135" height="731" maximized="true" key="dock-window-1" timestamp="1582734388704">
       <screen x="0" y="27" width="1366" height="704" />
     </state>
