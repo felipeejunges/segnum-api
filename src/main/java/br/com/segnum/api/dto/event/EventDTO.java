@@ -2,6 +2,8 @@ package br.com.segnum.api.dto.event;
 
 import br.com.segnum.api.domain.Event;
 import br.com.segnum.api.domain.User;
+import br.com.segnum.api.dto.location.LocationDTO;
+import br.com.segnum.api.dto.location.LocationSimplifyDTO;
 import br.com.segnum.api.dto.user.UserSimplifyDTO;
 
 import javax.validation.constraints.NotEmpty;
@@ -14,6 +16,8 @@ public class EventDTO {
     private String name;
     private String description;
     private UserSimplifyDTO user;
+
+    private LocationSimplifyDTO locationDTO;
 
     public EventDTO() {
     }
@@ -37,6 +41,7 @@ public class EventDTO {
         this.name = event.getName();
         this.description = event.getDescription();
         this.user = new UserSimplifyDTO(event.getUser());
+        this.locationDTO = new LocationSimplifyDTO(event.getLocation());
     }
 
     public int getId() {
@@ -69,5 +74,13 @@ public class EventDTO {
 
     public void setUser(UserSimplifyDTO user) {
         this.user = user;
+    }
+
+    public LocationSimplifyDTO getLocationDTO() {
+        return locationDTO;
+    }
+
+    public void setLocationDTO(LocationSimplifyDTO locationDTO) {
+        this.locationDTO = locationDTO;
     }
 }

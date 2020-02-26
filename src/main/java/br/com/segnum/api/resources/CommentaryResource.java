@@ -44,7 +44,7 @@ public class CommentaryResource {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public ResponseEntity<List<Commentary>> findAll(@PathVariable int id) {
+    public ResponseEntity<List<Commentary>> findAll() {
         List<Commentary> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }

@@ -45,7 +45,7 @@ public class VoteResource {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public ResponseEntity<List<Vote>> findAll(@PathVariable int id) {
+    public ResponseEntity<List<Vote>> findAll() {
         List<Vote> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }

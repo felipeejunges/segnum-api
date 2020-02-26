@@ -2,6 +2,8 @@ package br.com.segnum.api.resources;
 
 import br.com.segnum.api.domain.Event;
 import br.com.segnum.api.domain.Event;
+import br.com.segnum.api.dto.event.EventDTO;
+import br.com.segnum.api.dto.location.LocationDTO;
 import br.com.segnum.api.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value="event")
@@ -35,7 +38,8 @@ public class EventResource {
     @RequestMapping(value="{id}", method= RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable int id) {
         Event obj = service.find(id);
-        return ResponseEntity.ok().body(obj);
+        EventDTO dto = new EventDTO(obj);
+        return ResponseEntity.ok().body(dto);
     }
 
     @RequestMapping(method= RequestMethod.DELETE)
@@ -45,9 +49,11 @@ public class EventResource {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public ResponseEntity<List<Event>> findAll(@PathVariable int id) {
+    public ResponseEntity<List<EventDTO>> findAll() {
         List<Event> list = service.findAll();
-        return ResponseEntity.ok().body(list);
+        List<EventDTO> listDTO = list.stream()
+                .map(obj -> new EventDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDTO);
     }
 
 }

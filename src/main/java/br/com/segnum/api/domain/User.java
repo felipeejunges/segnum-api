@@ -35,7 +35,7 @@ public class User implements Serializable {
     private List<Vote> myComments = new ArrayList<>();
 
     @OneToMany(mappedBy="user", cascade=CascadeType.ALL)
-    private List<Vote> myEvents = new ArrayList<>();
+    private List<Event> myEvents = new ArrayList<>();
 
     public User() {
         addPerfil(Profile.USER);
@@ -136,11 +136,11 @@ public class User implements Serializable {
         this.myComments = myComments;
     }
 
-    public List<Vote> getMyEvents() {
+    public List<Event> getMyEvents() {
         return myEvents;
     }
 
-    public void setMyEvents(List<Vote> myEvents) {
+    public void setMyEvents(List<Event> myEvents) {
         this.myEvents = myEvents;
     }
 }

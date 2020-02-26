@@ -5,7 +5,9 @@ import br.com.segnum.api.domain.Location;
 import br.com.segnum.api.domain.User;
 import br.com.segnum.api.domain.enums.Profile;
 import br.com.segnum.api.dto.event.EventDTO;
+import br.com.segnum.api.dto.event.EventSimplifyDTO;
 import br.com.segnum.api.dto.location.LocationDTO;
+import br.com.segnum.api.dto.location.LocationSimplifyDTO;
 import br.com.segnum.api.dto.user.UserDTO;
 import br.com.segnum.api.dto.user.UserNewDTO;
 import br.com.segnum.api.dto.user.ChangeProfileDTO;
@@ -56,7 +58,7 @@ public class UserResource {
     public ResponseEntity<?> find(@PathVariable int id) {
         User obj = service.find(id);
         UserDTO dto = new UserDTO(obj);
-        return ResponseEntity.ok().body(obj);
+        return ResponseEntity.ok().body(dto);
     }
 
     @RequestMapping(method= RequestMethod.DELETE)
@@ -66,7 +68,7 @@ public class UserResource {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public ResponseEntity<List<UserDTO>> findAll(@PathVariable int id) {
+    public ResponseEntity<List<UserDTO>> findAll() {
         List<User> list = service.findAll();
         List<UserDTO> listDTO = list.stream()
                 .map(obj -> new UserDTO(obj)).collect(Collectors.toList());
@@ -91,25 +93,25 @@ public class UserResource {
     }
 
     @RequestMapping(value="{id}/locations", method= RequestMethod.GET)
-    public ResponseEntity<List<LocationDTO>> myLocations(@PathVariable int id) {
+    public ResponseEntity<List<LocationSimplifyDTO>> myLocations(@PathVariable int id) {
         User user = service.find(id);
 
         List<Location> locations = locationRepository.findByUser(user);
 
-        List<LocationDTO> locationsDTO = locations.stream()
-                .map(obj -> new LocationDTO(obj)).collect(Collectors.toList());
+        List<LocationSimplifyDTO> locationsDTO = locations.stream()
+                .map(obj -> new LocationSimplifyDTO(obj)).collect(Collectors.toList());
 
         return ResponseEntity.ok().body(locationsDTO);
     }
 
     @RequestMapping(value="{id}/events", method= RequestMethod.GET)
-    public ResponseEntity<List<EventDTO>> myEvents(@PathVariable int id) {
+    public ResponseEntity<List<EventSimplifyDTO>> myEvents(@PathVariable int id) {
         User user = service.find(id);
 
         List<Event> events = eventRepository.findByUser(user);
 
-        List<EventDTO> eventsDTO = events.stream()
-                .map(obj -> new EventDTO(obj)).collect(Collectors.toList());
+        List<EventSimplifyDTO> eventsDTO = events.stream()
+                .map(obj -> new EventSimplifyDTO(obj)).collect(Collectors.toList());
 
         return ResponseEntity.ok().body(eventsDTO);
     }

@@ -22,7 +22,8 @@ public class Location implements Serializable {
     @JoinColumn
     private User user;
 
-    @OneToOne(mappedBy = "location")
+    @OneToOne
+    @JoinColumn
     private Event event;
 
     public Location() {

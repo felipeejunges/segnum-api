@@ -1,7 +1,9 @@
 package br.com.segnum.api.resources;
 
 import br.com.segnum.api.domain.Location;
+import br.com.segnum.api.dto.location.LocationDTO;
 import br.com.segnum.api.dto.location.LocationNewDTO;
+import br.com.segnum.api.dto.user.UserDTO;
 import br.com.segnum.api.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value="location")
@@ -51,7 +54,8 @@ public class LocationResource {
     @RequestMapping(value="{id}", method= RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable int id) {
         Location obj = service.find(id);
-        return ResponseEntity.ok().body(obj);
+        LocationDTO dto = new LocationDTO(obj);
+        return ResponseEntity.ok().body(dto);
     }
 
     @RequestMapping(method= RequestMethod.DELETE)
@@ -61,9 +65,11 @@ public class LocationResource {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public ResponseEntity<List<Location>> findAll(@PathVariable int id) {
+    public ResponseEntity<List<LocationDTO>> findAll() {
         List<Location> list = service.findAll();
-        return ResponseEntity.ok().body(list);
+        List<LocationDTO> listDTO = list.stream()
+                .map(obj -> new LocationDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDTO);
     }
 
 }
