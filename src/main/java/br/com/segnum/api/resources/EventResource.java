@@ -3,6 +3,8 @@ package br.com.segnum.api.resources;
 import br.com.segnum.api.domain.Event;
 import br.com.segnum.api.domain.Event;
 import br.com.segnum.api.dto.event.EventDTO;
+import br.com.segnum.api.dto.event.EventNewDTO;
+import br.com.segnum.api.dto.event.EventNewSimplifyDTO;
 import br.com.segnum.api.dto.location.LocationDTO;
 import br.com.segnum.api.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +24,18 @@ public class EventResource {
     EventService service;
 
     @RequestMapping(method= RequestMethod.POST)
-    public ResponseEntity<Void> register(@RequestBody Event obj) {
-        service.insert(obj);
+    public ResponseEntity<Void> register(@RequestBody EventNewSimplifyDTO dto) {
+        Event obj = service.fromDTO(dto);
+        obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
     @RequestMapping(value="{id}", method= RequestMethod.PUT)
-    public ResponseEntity<Void> update(@RequestBody Event obj, @PathVariable int id) {
+    public ResponseEntity<Void> update(@RequestBody EventNewSimplifyDTO dto, @PathVariable int id) {
+        Event obj = service.fromDTO(dto);
+        obj.setId(id);
         service.update(obj);
         return ResponseEntity.noContent().build();
     }

@@ -15,6 +15,10 @@ public class EventNewDTO {
     private String description;
     private int userId;
 
+    private String locationX;
+    private String locationY;
+    private String locationName;
+
     public EventNewDTO() {
     }
 
@@ -25,6 +29,15 @@ public class EventNewDTO {
         this.userId = userId;
     }
 
+    public EventNewDTO(int id, String name, String description, int userId, String locationName, String locationX, String locationY) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.userId = userId;
+        this.locationName = locationName;
+        this.locationX = locationX;
+        this.locationY = locationY;
+    }
 
     public int getId() {
         return id;
@@ -56,6 +69,30 @@ public class EventNewDTO {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getLocationX() {
+        return locationX;
+    }
+
+    public void setLocationX(String locationX) {
+        this.locationX = locationX;
+    }
+
+    public String getLocationY() {
+        return locationY;
+    }
+
+    public void setLocationY(String locationY) {
+        this.locationY = locationY;
+    }
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 }
 
