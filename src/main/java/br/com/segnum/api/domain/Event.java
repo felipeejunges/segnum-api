@@ -28,6 +28,10 @@ public class Event implements Serializable {
 
     @ManyToOne
     @JoinColumn
+    private EventType eventType;
+
+    @ManyToOne
+    @JoinColumn
     private User user;
 
     public Event() {
@@ -40,29 +44,32 @@ public class Event implements Serializable {
         this.description = description;
     }
 
-    public Event(int id, String name, String description, Location location) {
+    public Event(int id, String name, String description, EventType eventType, Location location) {
         super();
         this.id = id;
         this.name = name;
         this.description = description;
         this.location = location;
+        this.eventType = eventType;
     }
 
-    public Event(int id, String name, String description, User user) {
+    public Event(int id, String name, String description, EventType eventType, User user) {
         super();
         this.id = id;
         this.name = name;
         this.description = description;
         this.user = user;
+        this.eventType = eventType;
     }
 
-    public Event(int id, String name, String description, Location location, User user) {
+    public Event(int id, String name, String description, EventType eventType, Location location, User user) {
         super();
         this.id = id;
         this.name = name;
         this.description = description;
         this.location = location;
         this.user = user;
+        this.eventType = eventType;
     }
 
     public int getId() {
@@ -119,5 +126,13 @@ public class Event implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public EventType getEventTypes() {
+        return eventType;
+    }
+
+    public void setEventTypes(EventType eventType) {
+        this.eventType = eventType;
     }
 }

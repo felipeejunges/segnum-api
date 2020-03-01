@@ -9,15 +9,17 @@ public class EventNewSimplifyDTO {
     @NotEmpty(message="Preenchimento obrigatório")
     private String name;
     private String description;
+    private int eventTypeId;
     private int userId;
 
     public EventNewSimplifyDTO() {
     }
 
-    public EventNewSimplifyDTO(int id, String name, String description, int userId) {
+    public EventNewSimplifyDTO(int id, String name, String description, int eventTypeId, int userId) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.eventTypeId = eventTypeId;
         this.userId = userId;
     }
 
@@ -53,5 +55,12 @@ public class EventNewSimplifyDTO {
         this.userId = userId;
     }
 
+    public int getEventTypeId() {
+        return eventTypeId;
+    }
+
+    public void setEventTypeId(int eventTypeId) {
+        this.eventTypeId = eventTypeId;
+    }
 }
 

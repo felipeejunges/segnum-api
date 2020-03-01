@@ -5,6 +5,7 @@ import br.com.segnum.api.domain.Event;
 import br.com.segnum.api.dto.event.EventNewDTO;
 import br.com.segnum.api.dto.event.EventNewSimplifyDTO;
 import br.com.segnum.api.repositories.EventRepository;
+import br.com.segnum.api.repositories.EventTypeRepository;
 import br.com.segnum.api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class EventService {
 
     @Autowired
     private EventRepository repo;
+
+    @Autowired
+    private EventTypeRepository eventTypeRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -53,7 +57,8 @@ public class EventService {
 
     public Event fromDTO(EventNewDTO dto) {
         User user = userRepository.findById(dto.getUserId()).get();
-        Event event = new Event(0, dto.getName(), dto.getDescription(), user);
+        EventType eventType = eventTypeRepository.findById(dto.getEventTypeId()).get();
+        Event event = new Event(0, dto.getName(), dto.getDescription(), eventType, user);
         Location location = new Location(0, dto.getLocationName(), dto.getLocationX(), dto.getLocationY(), event);
         event.setLocation(location);
         return event;
@@ -61,7 +66,8 @@ public class EventService {
 
     public Event fromDTO(EventNewSimplifyDTO dto) {
         User user = userRepository.findById(dto.getUserId()).get();
-        return new Event(0, dto.getName(), dto.getDescription(), user);
+        EventType eventType = eventTypeRepository.findById(dto.getEventTypeId()).get();
+        return new Event(0, dto.getName(), dto.getDescription(), eventType, user);
     }
 }
 

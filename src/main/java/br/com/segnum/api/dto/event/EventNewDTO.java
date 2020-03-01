@@ -13,6 +13,7 @@ public class EventNewDTO {
     @NotEmpty(message="Preenchimento obrigatório")
     private String name;
     private String description;
+    private int eventTypeId;
     private int userId;
 
     private String locationX;
@@ -22,17 +23,19 @@ public class EventNewDTO {
     public EventNewDTO() {
     }
 
-    public EventNewDTO(int id, String name, String description, int userId) {
+    public EventNewDTO(int id, String name, String description, int eventTypeId, int userId) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.userId = userId;
+        this.eventTypeId = eventTypeId;
     }
 
-    public EventNewDTO(int id, String name, String description, int userId, String locationName, String locationX, String locationY) {
+    public EventNewDTO(int id, String name, String description, int eventTypeId, int userId, String locationName, String locationX, String locationY) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.eventTypeId = eventTypeId;
         this.userId = userId;
         this.locationName = locationName;
         this.locationX = locationX;
@@ -61,6 +64,14 @@ public class EventNewDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getEventTypeId() {
+        return eventTypeId;
+    }
+
+    public void setEventTypeId(int eventTypeId) {
+        this.eventTypeId = eventTypeId;
     }
 
     public int getUserId() {
