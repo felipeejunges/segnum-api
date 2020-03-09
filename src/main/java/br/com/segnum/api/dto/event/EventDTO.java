@@ -2,7 +2,7 @@ package br.com.segnum.api.dto.event;
 
 import br.com.segnum.api.domain.Event;
 import br.com.segnum.api.domain.User;
-import br.com.segnum.api.dto.location.LocationDTO;
+import br.com.segnum.api.dto.eventType.EventTypeSimplifyDTO;
 import br.com.segnum.api.dto.location.LocationSimplifyDTO;
 import br.com.segnum.api.dto.user.UserSimplifyDTO;
 
@@ -16,7 +16,7 @@ public class EventDTO {
     private String name;
     private String description;
     private UserSimplifyDTO user;
-
+    private EventTypeSimplifyDTO eventTypeDTO;
     private LocationSimplifyDTO locationDTO;
 
     public EventDTO() {
@@ -42,6 +42,7 @@ public class EventDTO {
         this.description = event.getDescription();
         this.user = new UserSimplifyDTO(event.getUser());
         this.locationDTO = new LocationSimplifyDTO(event.getLocation());
+        this.eventTypeDTO = new EventTypeSimplifyDTO(event.getEventType());
     }
 
     public int getId() {
@@ -82,5 +83,13 @@ public class EventDTO {
 
     public void setLocationDTO(LocationSimplifyDTO locationDTO) {
         this.locationDTO = locationDTO;
+    }
+
+    public EventTypeSimplifyDTO getEventTypeDTO() {
+        return eventTypeDTO;
+    }
+
+    public void setEventTypeDTO(EventTypeSimplifyDTO eventTypeDTO) {
+        this.eventTypeDTO = eventTypeDTO;
     }
 }

@@ -26,7 +26,7 @@ public class Event implements Serializable {
     @OneToMany(mappedBy="event", cascade=CascadeType.ALL)
     private List<Vote> comments = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private EventType eventType;
 
@@ -128,11 +128,11 @@ public class Event implements Serializable {
         this.user = user;
     }
 
-    public EventType getEventTypes() {
+    public EventType getEventType() {
         return eventType;
     }
 
-    public void setEventTypes(EventType eventType) {
+    public void setEventType(EventType eventType) {
         this.eventType = eventType;
     }
 }

@@ -29,7 +29,8 @@ public class EventService {
 
     public Event insert(Event obj) {
         obj.setId(0);
-        userRepository.save(obj.getUser());
+//        userRepository.save(obj.getUser());
+//        eventTypeRepository.save(obj.getEventType());
         obj = repo.save(obj);
         return obj;
     }
