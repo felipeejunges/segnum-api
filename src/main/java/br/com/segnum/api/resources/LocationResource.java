@@ -5,6 +5,7 @@ import br.com.segnum.api.dto.location.LocationDTO;
 import br.com.segnum.api.dto.location.LocationNewDTO;
 import br.com.segnum.api.dto.user.UserDTO;
 import br.com.segnum.api.services.LocationService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,12 +46,14 @@ public class LocationResource {
         return ResponseEntity.created(uri).build();
     }
 
-    @RequestMapping(value="{id}", method= RequestMethod.PUT)
-    public ResponseEntity<Void> update(@RequestBody Location obj, @PathVariable int id) {
-        service.update(obj);
-        return ResponseEntity.noContent().build();
-    }
+//    @RequestMapping(value="{id}", method= RequestMethod.PUT)
+//    public ResponseEntity<Void> update(@RequestBody Location LocationNewDTO, @PathVariable int id) {
+//        Location obj =
+//        service.update(obj);
+//        return ResponseEntity.noContent().build();
+//    }
 
+    @ApiOperation(value= "", response = List.class)
     @RequestMapping(value="{id}", method= RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable int id) {
         Location obj = service.find(id);

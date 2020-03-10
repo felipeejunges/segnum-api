@@ -26,28 +26,28 @@ public class VoteResource {
         return ResponseEntity.created(uri).build();
     }
 
-    @RequestMapping(value="{id}", method= RequestMethod.PUT)
-    public ResponseEntity<Void> update(@RequestBody Vote obj, @PathVariable int id) {
-        service.update(obj);
-        return ResponseEntity.noContent().build();
-    }
-
-    @RequestMapping(value="{id}", method= RequestMethod.GET)
-    public ResponseEntity<?> find(@PathVariable int id) {
-        Vote obj = service.find(id);
-        return ResponseEntity.ok().body(obj);
-    }
-
-    @RequestMapping(method= RequestMethod.DELETE)
-    public ResponseEntity<Void> delete(@PathVariable int id) {
-        Vote obj = service.delete(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @RequestMapping(method= RequestMethod.GET)
-    public ResponseEntity<List<Vote>> findAll() {
-        List<Vote> list = service.findAll();
-        return ResponseEntity.ok().body(list);
-    }
+//    @RequestMapping(value="{id}", method= RequestMethod.PUT)
+//    public ResponseEntity<Void> update(@RequestBody Vote obj, @PathVariable int id) {
+//        service.update(obj);
+//        return ResponseEntity.noContent().build();
+//    }
+//
+//    @RequestMapping(value="{id}", method= RequestMethod.GET)
+//    public ResponseEntity<?> find(@PathVariable int id) {
+//        Vote obj = service.find(id);
+//        return ResponseEntity.ok().body(obj);
+//    }
+//
+//    @RequestMapping(method= RequestMethod.DELETE)
+//    public ResponseEntity<Void> delete(@PathVariable int id) {
+//        Vote obj = service.delete(id);
+//        return ResponseEntity.noContent().build();
+//    }
+//
+//    @RequestMapping(method= RequestMethod.GET)
+//    public ResponseEntity<List<Vote>> findAll() {
+//        List<Vote> list = service.findAll();
+//        return ResponseEntity.ok().body(list);
+//    }
 
 }

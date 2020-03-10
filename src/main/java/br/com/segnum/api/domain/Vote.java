@@ -1,8 +1,11 @@
 package br.com.segnum.api.domain;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
+@ApiIgnore
 @Entity
 public class Vote implements Serializable {
     private static final long serialVersionUID = 1L;

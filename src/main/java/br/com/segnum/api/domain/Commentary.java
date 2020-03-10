@@ -1,8 +1,12 @@
 package br.com.segnum.api.domain;
 
+import io.swagger.annotations.ApiModel;
+import springfox.documentation.annotations.ApiIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
+@ApiIgnore
 @Entity
 public class Commentary implements Serializable {
     private static final long serialVersionUID = 1L;

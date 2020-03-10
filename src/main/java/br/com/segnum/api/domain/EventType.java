@@ -1,10 +1,13 @@
 package br.com.segnum.api.domain;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApiIgnore
 @Entity
 public class EventType implements Serializable {
     private static final long serialVersionUID = 1L;

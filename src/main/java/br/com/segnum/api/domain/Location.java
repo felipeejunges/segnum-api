@@ -2,10 +2,12 @@ package br.com.segnum.api.domain;
 
 import br.com.segnum.api.domain.User;
 import br.com.segnum.api.domain.enums.LocationType;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
+@ApiIgnore
 @Entity
 public class Location implements Serializable {
     private static final long serialVersionUID = 1L;

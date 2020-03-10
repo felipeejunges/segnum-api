@@ -1,12 +1,14 @@
 package br.com.segnum.api.domain;
 
 import br.com.segnum.api.domain.enums.Profile;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@ApiIgnore
 @Entity
 public class Event implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -24,7 +26,7 @@ public class Event implements Serializable {
     private List<Vote> votes = new ArrayList<>();
 
     @OneToMany(mappedBy="event", cascade=CascadeType.ALL)
-    private List<Vote> comments = new ArrayList<>();
+    private List<Commentary> comments = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn
@@ -112,11 +114,11 @@ public class Event implements Serializable {
         this.votes = votes;
     }
 
-    public List<Vote> getComments() {
+    public List<Commentary> getComments() {
         return comments;
     }
 
-    public void setComments(List<Vote> comments) {
+    public void setComments(List<Commentary> comments) {
         this.comments = comments;
     }
 

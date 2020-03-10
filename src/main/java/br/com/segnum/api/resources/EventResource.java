@@ -7,6 +7,7 @@ import br.com.segnum.api.dto.event.EventNewDTO;
 import br.com.segnum.api.dto.event.EventNewSimplifyDTO;
 import br.com.segnum.api.dto.location.LocationDTO;
 import br.com.segnum.api.services.EventService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,7 @@ public class EventResource {
         return ResponseEntity.noContent().build();
     }
 
+    @ApiOperation(value= "", response = EventDTO.class)
     @RequestMapping(value="{id}", method= RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable int id) {
         Event obj = service.find(id);

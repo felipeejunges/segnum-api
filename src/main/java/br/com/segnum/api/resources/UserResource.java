@@ -14,6 +14,7 @@ import br.com.segnum.api.dto.user.ChangeProfileDTO;
 import br.com.segnum.api.repositories.EventRepository;
 import br.com.segnum.api.repositories.LocationRepository;
 import br.com.segnum.api.services.UserService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -54,6 +55,7 @@ public class UserResource {
         return ResponseEntity.noContent().build();
     }
 
+    @ApiOperation(value= "", response = UserDTO.class)
     @RequestMapping(value="{id}", method= RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable int id) {
         User obj = service.find(id);

@@ -1,12 +1,16 @@
 package br.com.segnum.api.domain;
 
 import br.com.segnum.api.domain.enums.Profile;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@ApiIgnore
 @Entity
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
