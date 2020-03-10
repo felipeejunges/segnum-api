@@ -48,16 +48,17 @@ public class DBService {
 		EventType et2 = new EventType(0, "Furto ", "Furto");
 		EventType et3 = new EventType(0, "Assassinato ", "Assassinato");
 
-		Event event = new Event(0, "Evento Exemplo", "Descrição com descrição", null, master);
+		Event event = new Event(0, "Evento Exemplo", "Descrição com descrição", et1, master);
 		Location eventLocation = new Location(0, "Casa de Eventos", "-24.4568614", "-48.2505684", event);
+
 		event.setLocation(eventLocation);
-//		et1.getEvents().add(event);
 		master.getMyEvents().add(event);
+		et1.getEvents().add(event);
 
 		userRepository.saveAll(Arrays.asList(master));
-		eventRepository.saveAll(Arrays.asList(event));
-		locationRepository.saveAll(Arrays.asList(location));
-//		eventTypeRepository.saveAll(Arrays.asList(et1, et2, et3));
+		eventTypeRepository.saveAll(Arrays.asList(et1, et2, et3));
+//		eventRepository.saveAll(Arrays.asList(event));
+//		locationRepository.saveAll(Arrays.asList(location));
 
 	}
 
