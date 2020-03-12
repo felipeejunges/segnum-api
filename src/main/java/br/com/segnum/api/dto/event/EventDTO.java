@@ -40,9 +40,9 @@ public class EventDTO {
         this.id = event.getId();
         this.name = event.getName();
         this.description = event.getDescription();
-        this.user = new UserSimplifyDTO(event.getUser());
-        this.locationDTO = new LocationSimplifyDTO(event.getLocation());
-        this.eventTypeDTO = new EventTypeSimplifyDTO(event.getEventType());
+        if (event.getUser() != null) this.user = new UserSimplifyDTO(event.getUser());
+        if (event.getLocation() != null) this.locationDTO = new LocationSimplifyDTO(event.getLocation());
+        if (event.getEventType() != null) this.eventTypeDTO = new EventTypeSimplifyDTO(event.getEventType());
     }
 
     public int getId() {

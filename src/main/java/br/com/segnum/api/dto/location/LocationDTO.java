@@ -47,7 +47,7 @@ public class LocationDTO {
         this.lx = lx;
         this.ly = ly;
         this.type = type;
-        this.user = new UserSimplifyDTO(user);
+        if (user != null) this.user = new UserSimplifyDTO(user);
     }
 
     public LocationDTO(int id, String name, String lx, String ly, LocationTypeDTO type, Event event) {
@@ -56,7 +56,7 @@ public class LocationDTO {
         this.lx = lx;
         this.ly = ly;
         this.type = type;
-        this.event = new EventSimplifyDTO(event);
+        if (event != null) this.event = new EventSimplifyDTO(event);
     }
 
     public LocationDTO(Location obj) {
@@ -64,7 +64,7 @@ public class LocationDTO {
         this.name = obj.getName();
         this.lx = obj.getLx();
         this.ly = obj.getLy();
-        this.type = new LocationTypeDTO(obj.getType());
+        if (obj.getType() != null) this.type = new LocationTypeDTO(obj.getType());
         if (obj.getEvent() != null) this.event = new EventSimplifyDTO(obj.getEvent());
         if (obj.getUser() != null) this.user = new UserSimplifyDTO(obj.getUser());
     }

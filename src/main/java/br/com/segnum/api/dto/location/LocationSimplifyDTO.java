@@ -34,7 +34,7 @@ public class LocationSimplifyDTO {
         this.name = obj.getName();
         this.lx = obj.getLx();
         this.ly = obj.getLy();
-        this.type = new LocationTypeDTO(obj.getType());
+        if (obj.getType() != null) this.type = new LocationTypeDTO(obj.getType());
     }
 
     public String getName() {

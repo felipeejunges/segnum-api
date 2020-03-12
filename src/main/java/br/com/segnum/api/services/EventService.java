@@ -68,7 +68,8 @@ public class EventService {
     public Event fromDTO(EventNewSimplifyDTO dto) {
         User user = userRepository.findById(dto.getUserId()).get();
         EventType eventType = eventTypeRepository.findById(dto.getEventTypeId()).get();
-        return new Event(0, dto.getName(), dto.getDescription(), eventType, user);
+        Event event = new Event(0, dto.getName(), dto.getDescription(), eventType, user);
+        return event;
     }
 }
 
