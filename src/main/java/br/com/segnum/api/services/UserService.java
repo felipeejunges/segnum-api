@@ -3,7 +3,9 @@ package br.com.segnum.api.services;
 import br.com.segnum.api.domain.User;
 import br.com.segnum.api.dto.user.UserNewDTO;
 import br.com.segnum.api.repositories.UserRepository;
+import br.com.segnum.api.security.UserSS;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,5 +46,14 @@ public class UserService {
 
     public User fromDTO(UserNewDTO objDto) {
         return new User(0, objDto.getName(), objDto.getEmail(), objDto.getPhone(), objDto.getBirthday(), objDto.getPassword());
+    }
+
+    public static UserSS authenticated() {
+        try {
+            return (UserSS) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        }
+        catch (Exception e) {
+            return null;
+        }
     }
 }
