@@ -1,9 +1,8 @@
 package br.com.segnum.api.resources;
 
-import br.com.segnum.api.domain.Event;
-import br.com.segnum.api.domain.Location;
-import br.com.segnum.api.domain.User;
+import br.com.segnum.api.domain.*;
 import br.com.segnum.api.domain.enums.Profile;
+import br.com.segnum.api.dto.commentary.CommentaryUserDTO;
 import br.com.segnum.api.dto.event.EventDTO;
 import br.com.segnum.api.dto.event.EventSimplifyDTO;
 import br.com.segnum.api.dto.location.LocationDTO;
@@ -11,8 +10,11 @@ import br.com.segnum.api.dto.location.LocationSimplifyDTO;
 import br.com.segnum.api.dto.user.UserDTO;
 import br.com.segnum.api.dto.user.UserNewDTO;
 import br.com.segnum.api.dto.user.ChangeProfileDTO;
+import br.com.segnum.api.dto.vote.VoteUserDTO;
+import br.com.segnum.api.repositories.CommentaryRepository;
 import br.com.segnum.api.repositories.EventRepository;
 import br.com.segnum.api.repositories.LocationRepository;
+import br.com.segnum.api.repositories.VoteRepository;
 import br.com.segnum.api.services.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,12 @@ public class UserResource {
 
     @Autowired
     EventRepository eventRepository;
+
+    @Autowired
+    VoteRepository voteRepository;
+
+    @Autowired
+    CommentaryRepository commentaryRepository;
 
     @RequestMapping(method= RequestMethod.POST)
     public ResponseEntity<Void> register(@RequestBody UserNewDTO dto) {
@@ -116,6 +124,30 @@ public class UserResource {
                 .map(obj -> new EventSimplifyDTO(obj)).collect(Collectors.toList());
 
         return ResponseEntity.ok().body(eventsDTO);
+    }
+
+    @RequestMapping(value="{id}/votes", method= RequestMethod.GET)
+    public ResponseEntity<List<VoteUserDTO>> myVotes(@PathVariable int id) {
+        User user = service.find(id);
+
+        List<Vote> votes = voteRepository.findByUser(user);
+
+        List<VoteUserDTO> votesDTO = votes.stream()
+                .map(obj -> new VoteUserDTO(obj)).collect(Collectors.toList());
+
+        return ResponseEntity.ok().body(votesDTO);
+    }
+
+    @RequestMapping(value="{id}/commentaries", method= RequestMethod.GET)
+    public ResponseEntity<List<CommentaryUserDTO>> myCommentaries(@PathVariable int id) {
+        User user = service.find(id);
+
+        List<Commentary> votes = commentaryRepository.findByUser(user);
+
+        List<CommentaryUserDTO> commentariesDTO  = votes.stream()
+                .map(obj -> new CommentaryUserDTO(obj)).collect(Collectors.toList());
+
+        return ResponseEntity.ok().body(commentariesDTO);
     }
 
 }
