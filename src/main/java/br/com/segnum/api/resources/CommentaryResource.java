@@ -1,6 +1,10 @@
 package br.com.segnum.api.resources;
 
 import br.com.segnum.api.domain.Commentary;
+import br.com.segnum.api.domain.Vote;
+import br.com.segnum.api.dto.commentary.CommentaryDTO;
+import br.com.segnum.api.dto.commentary.CommentaryNewDTO;
+import br.com.segnum.api.dto.vote.VoteNewDTO;
 import br.com.segnum.api.services.CommentaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,19 +21,24 @@ public class CommentaryResource {
     @Autowired
     CommentaryService service;
 
-//    @RequestMapping(method= RequestMethod.POST)
-//    public ResponseEntity<Void> register(@RequestBody Commentary obj) {
-//        service.insert(obj);
-//        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-//                .path("/{id}").buildAndExpand(obj.getId()).toUri();
-//        return ResponseEntity.created(uri).build();
-//    }
+    @RequestMapping(method= RequestMethod.POST)
+    public ResponseEntity<Void> register(@RequestBody CommentaryNewDTO dto) {
+        Commentary obj = service.fromDTO(dto);
+        service.insert(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
 
-//    @RequestMapping(value="{id}", method= RequestMethod.PUT)
-//    public ResponseEntity<Void> update(@RequestBody Commentary obj, @PathVariable int id) {
-//        service.update(obj);
-//        return ResponseEntity.noContent().build();
-//    }
+    @RequestMapping(value="{id}", method= RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody CommentaryNewDTO dto, @PathVariable int id) {
+        Commentary obj = service.fromDTO(dto);
+        obj.setId(id);
+        service.update(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
 //
 //    @RequestMapping(value="{id}", method= RequestMethod.GET)
 //    public ResponseEntity<?> find(@PathVariable int id) {

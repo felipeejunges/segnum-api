@@ -1,8 +1,10 @@
 package br.com.segnum.api.services;
 
-import br.com.segnum.api.domain.Commentary;
+import br.com.segnum.api.domain.Event;
 import br.com.segnum.api.domain.User;
 import br.com.segnum.api.domain.Vote;
+import br.com.segnum.api.dto.vote.VoteNewDTO;
+import br.com.segnum.api.repositories.EventRepository;
 import br.com.segnum.api.repositories.UserRepository;
 import br.com.segnum.api.repositories.VoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,12 @@ public class VoteService {
 
     @Autowired
     private VoteRepository repo;
+
+    @Autowired
+    private EventRepository eventRepo;
+
+    @Autowired
+    private UserRepository userRepo;
 
     public Vote insert(Vote obj) {
         obj.setId(0);
@@ -42,5 +50,13 @@ public class VoteService {
         Vote obj = find(id);
         repo.delete(obj);
         return obj;
+    }
+
+    public Vote fromDTO(VoteNewDTO dto) {
+        Event event = null;
+        User user = null;
+        if (dto.getEventId() != 0) event = eventRepo.findById(dto.getEventId()).get();
+        if (dto.getUserId() != 0) user = userRepo.findById(dto.getEventId()).get();
+        return new Vote(0, dto.isUpVote(), dto.getReason(), event, user);
     }
 }
