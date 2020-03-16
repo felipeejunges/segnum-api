@@ -3,6 +3,7 @@ package br.com.segnum.api.config;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -28,6 +29,7 @@ import br.com.segnum.api.security.JWTUtil;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Qualifier("userDetailsServiceImpl")
 	@Autowired
 	private UserDetailsService userDetailsService;
 
@@ -39,7 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private static final String[] PUBLIC_MATCHERS = {
 			"/h2-console/**",
-			"/swagger-ui.html/**"
+			"/swagger-ui.html/**",
+			"/**"
 	};
 
 	private static final String[] PUBLIC_MATCHERS_GET = {
