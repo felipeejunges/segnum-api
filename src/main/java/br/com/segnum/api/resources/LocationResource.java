@@ -8,6 +8,7 @@ import br.com.segnum.api.services.LocationService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -61,6 +62,7 @@ public class LocationResource {
         return ResponseEntity.ok().body(dto);
     }
 
+    @PreAuthorize("hasAnyRole('MASTER', 'ADMINISTRATOR', 'MODERATOR')")
     @RequestMapping(method= RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable int id) {
         Location obj = service.delete(id);

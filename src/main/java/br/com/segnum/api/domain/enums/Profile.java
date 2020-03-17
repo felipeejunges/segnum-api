@@ -2,7 +2,7 @@ package br.com.segnum.api.domain.enums;
 
 public enum Profile {
 
-    MASTER(1, "ROLE_ADMIN"),
+    MASTER(1, "ROLE_MASTER"),
     ADMINISTRATOR(2, "ROLE_ADMIN"),
     MODERATOR(3, "ROLE_MODERADOR"),
     USER(4, "ROLE_USER");
