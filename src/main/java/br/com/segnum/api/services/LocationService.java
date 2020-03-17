@@ -1,6 +1,8 @@
 package br.com.segnum.api.services;
 
-import br.com.segnum.api.domain.*;
+import br.com.segnum.api.domain.Event;
+import br.com.segnum.api.domain.Location;
+import br.com.segnum.api.domain.User;
 import br.com.segnum.api.dto.location.LocationNewDTO;
 import br.com.segnum.api.repositories.EventRepository;
 import br.com.segnum.api.repositories.LocationRepository;

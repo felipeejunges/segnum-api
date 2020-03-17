@@ -1,10 +1,6 @@
 package br.com.segnum.api.dto.location;
 
-import br.com.segnum.api.domain.Event;
 import br.com.segnum.api.domain.Location;
-import br.com.segnum.api.domain.User;
-import br.com.segnum.api.dto.event.EventSimplifyDTO;
-import br.com.segnum.api.dto.user.UserSimplifyDTO;
 
 import javax.validation.constraints.NotEmpty;
 

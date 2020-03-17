@@ -1,7 +1,6 @@
 package br.com.segnum.api.dto.event;
 
 import br.com.segnum.api.domain.Event;
-import br.com.segnum.api.domain.User;
 
 import javax.validation.constraints.NotEmpty;
 

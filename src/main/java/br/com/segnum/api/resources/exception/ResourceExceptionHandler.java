@@ -1,7 +1,5 @@
 package br.com.segnum.api.resources.exception;
 
-import javax.servlet.http.HttpServletRequest;
-
 import br.com.segnum.api.exceptions.DataIntegrityException;
 import br.com.segnum.api.exceptions.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -10,6 +8,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {

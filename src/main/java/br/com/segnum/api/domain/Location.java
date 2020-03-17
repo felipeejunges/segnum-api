@@ -1,6 +1,5 @@
 package br.com.segnum.api.domain;
 
-import br.com.segnum.api.domain.User;
 import br.com.segnum.api.domain.enums.LocationType;
 import springfox.documentation.annotations.ApiIgnore;
 

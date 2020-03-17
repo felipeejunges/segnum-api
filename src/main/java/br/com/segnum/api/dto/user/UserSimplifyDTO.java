@@ -1,9 +1,8 @@
 package br.com.segnum.api.dto.user;
 
 import br.com.segnum.api.domain.User;
+
 import javax.validation.constraints.NotEmpty;
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserSimplifyDTO {
 

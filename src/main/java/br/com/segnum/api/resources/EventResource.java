@@ -1,15 +1,12 @@
 package br.com.segnum.api.resources;
 
-import br.com.segnum.api.domain.*;
+import br.com.segnum.api.domain.Commentary;
 import br.com.segnum.api.domain.Event;
+import br.com.segnum.api.domain.Vote;
 import br.com.segnum.api.dto.commentary.CommentaryEventDTO;
-import br.com.segnum.api.dto.commentary.CommentaryUserDTO;
 import br.com.segnum.api.dto.event.EventDTO;
-import br.com.segnum.api.dto.event.EventNewDTO;
 import br.com.segnum.api.dto.event.EventNewSimplifyDTO;
-import br.com.segnum.api.dto.location.LocationDTO;
 import br.com.segnum.api.dto.vote.VoteEventDTO;
-import br.com.segnum.api.dto.vote.VoteUserDTO;
 import br.com.segnum.api.repositories.CommentaryRepository;
 import br.com.segnum.api.repositories.VoteRepository;
 import br.com.segnum.api.services.EventService;

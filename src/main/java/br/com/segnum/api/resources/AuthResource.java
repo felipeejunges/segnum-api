@@ -1,18 +1,16 @@
 package br.com.segnum.api.resources;
 
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-
 import br.com.segnum.api.security.JWTUtil;
 import br.com.segnum.api.security.UserSS;
 import br.com.segnum.api.services.AuthService;
 import br.com.segnum.api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping(value = "/auth")

@@ -2,8 +2,8 @@ package br.com.segnum.api.services.helpers;
 
 import br.com.segnum.api.domain.Event;
 import br.com.segnum.api.domain.EventType;
-import br.com.segnum.api.domain.User;
 import br.com.segnum.api.domain.Location;
+import br.com.segnum.api.domain.User;
 import br.com.segnum.api.domain.enums.Profile;
 import br.com.segnum.api.repositories.EventRepository;
 import br.com.segnum.api.repositories.EventTypeRepository;

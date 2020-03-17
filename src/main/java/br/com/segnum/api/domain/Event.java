@@ -1,12 +1,11 @@
 package br.com.segnum.api.domain;
 
-import br.com.segnum.api.domain.enums.Profile;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
 
 @ApiIgnore
 @Entity

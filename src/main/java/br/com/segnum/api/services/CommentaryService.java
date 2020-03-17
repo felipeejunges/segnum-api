@@ -1,8 +1,8 @@
 package br.com.segnum.api.services;
 
-import br.com.segnum.api.domain.*;
 import br.com.segnum.api.domain.Commentary;
-import br.com.segnum.api.dto.commentary.CommentaryDTO;
+import br.com.segnum.api.domain.Event;
+import br.com.segnum.api.domain.User;
 import br.com.segnum.api.dto.commentary.CommentaryNewDTO;
 import br.com.segnum.api.repositories.CommentaryRepository;
 import br.com.segnum.api.repositories.EventRepository;

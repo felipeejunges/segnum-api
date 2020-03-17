@@ -1,7 +1,8 @@
 package br.com.segnum.api.config;
 
-import java.util.Arrays;
-
+import br.com.segnum.api.security.JWTAuthenticationFilter;
+import br.com.segnum.api.security.JWTAuthorizationFilter;
+import br.com.segnum.api.security.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,9 +20,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import br.com.segnum.api.security.JWTAuthenticationFilter;
-import br.com.segnum.api.security.JWTAuthorizationFilter;
-import br.com.segnum.api.security.JWTUtil;
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity

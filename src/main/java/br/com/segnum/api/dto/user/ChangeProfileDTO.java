@@ -1,10 +1,6 @@
 package br.com.segnum.api.dto.user;
 
-import org.hibernate.validator.constraints.Length;
-
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import java.util.Date;
 
 public class ChangeProfileDTO {
 

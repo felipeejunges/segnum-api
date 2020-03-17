@@ -1,13 +1,13 @@
 package br.com.segnum.api.services;
 
-import java.util.Random;
-
 import br.com.segnum.api.domain.User;
 import br.com.segnum.api.repositories.UserRepository;
 import br.com.segnum.api.services.helpers.email.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Random;
 
 @Service
 public class AuthService {

@@ -3,13 +3,11 @@ package br.com.segnum.api.resources;
 import br.com.segnum.api.domain.*;
 import br.com.segnum.api.domain.enums.Profile;
 import br.com.segnum.api.dto.commentary.CommentaryUserDTO;
-import br.com.segnum.api.dto.event.EventDTO;
 import br.com.segnum.api.dto.event.EventSimplifyDTO;
-import br.com.segnum.api.dto.location.LocationDTO;
 import br.com.segnum.api.dto.location.LocationSimplifyDTO;
+import br.com.segnum.api.dto.user.ChangeProfileDTO;
 import br.com.segnum.api.dto.user.UserDTO;
 import br.com.segnum.api.dto.user.UserNewDTO;
-import br.com.segnum.api.dto.user.ChangeProfileDTO;
 import br.com.segnum.api.dto.vote.VoteUserDTO;
 import br.com.segnum.api.repositories.CommentaryRepository;
 import br.com.segnum.api.repositories.EventRepository;
@@ -24,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

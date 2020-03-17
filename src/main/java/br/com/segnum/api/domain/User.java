@@ -1,8 +1,6 @@
 package br.com.segnum.api.domain;
 
 import br.com.segnum.api.domain.enums.Profile;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.persistence.*;

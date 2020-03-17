@@ -3,7 +3,6 @@ package br.com.segnum.api.resources;
 import br.com.segnum.api.domain.Location;
 import br.com.segnum.api.dto.location.LocationDTO;
 import br.com.segnum.api.dto.location.LocationNewDTO;
-import br.com.segnum.api.dto.user.UserDTO;
 import br.com.segnum.api.services.LocationService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

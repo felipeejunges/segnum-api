@@ -1,10 +1,7 @@
 package br.com.segnum.api.resources;
 
 import br.com.segnum.api.domain.Commentary;
-import br.com.segnum.api.domain.Vote;
-import br.com.segnum.api.dto.commentary.CommentaryDTO;
 import br.com.segnum.api.dto.commentary.CommentaryNewDTO;
-import br.com.segnum.api.dto.vote.VoteNewDTO;
 import br.com.segnum.api.services.CommentaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping(value="comment")

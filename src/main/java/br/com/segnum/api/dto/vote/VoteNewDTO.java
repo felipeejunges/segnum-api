@@ -1,7 +1,5 @@
 package br.com.segnum.api.dto.vote;
 
-import br.com.segnum.api.domain.Vote;
-
 public class VoteNewDTO {
 
     private boolean upVote;
