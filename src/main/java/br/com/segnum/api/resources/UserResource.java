@@ -7,6 +7,7 @@ import br.com.segnum.api.dto.event.EventDTO;
 import br.com.segnum.api.dto.event.EventSimplifyDTO;
 import br.com.segnum.api.dto.location.LocationDTO;
 import br.com.segnum.api.dto.location.LocationSimplifyDTO;
+import br.com.segnum.api.dto.user.CredentialsDTO;
 import br.com.segnum.api.dto.user.UserDTO;
 import br.com.segnum.api.dto.user.UserNewDTO;
 import br.com.segnum.api.dto.user.ChangeProfileDTO;
@@ -150,6 +151,18 @@ public class UserResource {
                 .map(obj -> new CommentaryUserDTO(obj)).collect(Collectors.toList());
 
         return ResponseEntity.ok().body(commentariesDTO);
+    }
+
+    @RequestMapping(value="login", method=RequestMethod.POST)
+    public ResponseEntity<UserDTO> loginWithouJWT(@RequestBody CredentialsDTO credentialsDTO) {
+        User user = service.loginWithouJWT(credentialsDTO);
+        if (user != null) {
+            UserDTO dto = new UserDTO(user);
+            return ResponseEntity.ok().body(dto);
+        } else {
+            return ResponseEntity.status(401).body(null);
+        }
+
     }
 
 }

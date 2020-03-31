@@ -1,11 +1,15 @@
 package br.com.segnum.api.services;
 
 import br.com.segnum.api.domain.User;
+import br.com.segnum.api.dto.user.CredentialsDTO;
+import br.com.segnum.api.dto.user.UserDTO;
 import br.com.segnum.api.dto.user.UserNewDTO;
 import br.com.segnum.api.repositories.UserRepository;
 import br.com.segnum.api.security.UserSS;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +20,9 @@ public class UserService {
 
     @Autowired
     private UserRepository repo;
+
+    @Autowired
+    private BCryptPasswordEncoder pe;
 
     public User insert(User obj) {
         obj.setId(0);
@@ -55,5 +62,11 @@ public class UserService {
         catch (Exception e) {
             return null;
         }
+    }
+
+    public User loginWithouJWT(CredentialsDTO credentialsDTO) {
+        User user = repo.findByEmail(credentialsDTO.getEmail());
+        if (user.getPassword() != pe.encode(credentialsDTO.getPassword())) user = null;
+        return user;
     }
 }
