@@ -52,7 +52,7 @@ public class UserService {
     }
 
     public User fromDTO(UserNewDTO objDto) {
-        return new User(0, objDto.getName(), objDto.getEmail(), objDto.getPhone(), objDto.getBirthday(), objDto.getPassword());
+        return new User(0, objDto.getName(), objDto.getEmail(), objDto.getPhone(), objDto.getBirthday(), pe.encode(objDto.getPassword()));
     }
 
     public static UserSS authenticated() {
