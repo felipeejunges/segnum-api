@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import br.com.segnum.api.domain.*;
+import br.com.segnum.api.domain.enums.EventSource;
 import com.google.common.collect.Lists;
 import org.reflections.Reflections;
 import org.slf4j.Logger;
@@ -57,7 +58,8 @@ public class Swagger2Config {
                 EventType.class,
                 Location.class,
                 Vote.class,
-                Commentary.class
+                Commentary.class,
+                EventSource.class
         };
         return ignored;
     }
