@@ -8,6 +8,8 @@ public class SegnumApiApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SegnumApiApplication.class, args);
+
+
     }
 
 }

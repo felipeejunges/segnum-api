@@ -56,6 +56,11 @@ public class EventService {
         return obj;
     }
 
+    public List<Event> findNear(String longitude, String latitude, int rangeKm) {
+        List<Event> list = repo.findNear(longitude, latitude, rangeKm);
+        return list;
+    }
+
     public Event fromDTO(EventNewDTO dto) {
         User user = userRepository.findById(dto.getUserId()).get();
         EventType eventType = eventTypeRepository.findById(dto.getEventTypeId()).get();

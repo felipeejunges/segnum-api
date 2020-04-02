@@ -9,6 +9,7 @@ import br.com.segnum.api.security.UserSS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -51,8 +52,12 @@ public class UserService {
         return obj;
     }
 
-    public User fromDTO(UserNewDTO objDto) {
+    public User fromDTOEncode(UserNewDTO objDto) {
         return new User(0, objDto.getName(), objDto.getEmail(), objDto.getPhone(), objDto.getBirthday(), pe.encode(objDto.getPassword()));
+    }
+
+    public User fromDTO(UserNewDTO objDto) {
+        return new User(0, objDto.getName(), objDto.getEmail(), objDto.getPhone(), objDto.getBirthday(), objDto.getPassword());
     }
 
     public static UserSS authenticated() {
@@ -66,7 +71,8 @@ public class UserService {
 
     public User loginWithouJWT(CredentialsDTO credentialsDTO) {
         User user = repo.findByEmail(credentialsDTO.getEmail());
-        if (user.getPassword() != pe.encode(credentialsDTO.getPassword())) user = null;
+//        if (pe.matches(credentialsDTO.getPassword(), user.getPassword())) user = null;
+        if(user.getPassword() != credentialsDTO.getPassword()) user = null;
         return user;
     }
 }

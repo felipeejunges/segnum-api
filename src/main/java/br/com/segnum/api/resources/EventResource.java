@@ -8,6 +8,8 @@ import br.com.segnum.api.dto.event.EventDTO;
 import br.com.segnum.api.dto.event.EventNewDTO;
 import br.com.segnum.api.dto.event.EventNewSimplifyDTO;
 import br.com.segnum.api.dto.location.LocationDTO;
+import br.com.segnum.api.dto.location.LocationNewDTO;
+import br.com.segnum.api.dto.location.LocationSimplifyDTO;
 import br.com.segnum.api.dto.vote.VoteEventDTO;
 import br.com.segnum.api.dto.vote.VoteUserDTO;
 import br.com.segnum.api.repositories.CommentaryRepository;
@@ -72,6 +74,14 @@ public class EventResource {
     @RequestMapping(method= RequestMethod.GET)
     public ResponseEntity<List<EventDTO>> findAll() {
         List<Event> list = service.findAll();
+        List<EventDTO> listDTO = list.stream()
+                .map(obj -> new EventDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDTO);
+    }
+
+    @RequestMapping(value="/near", method= RequestMethod.POST)
+    public ResponseEntity<List<EventDTO>> findNear(@RequestBody LocationSimplifyDTO dto) {
+        List<Event> list = service.findNear(dto.getLx(), dto.getLy(), 5);
         List<EventDTO> listDTO = list.stream()
                 .map(obj -> new EventDTO(obj)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDTO);

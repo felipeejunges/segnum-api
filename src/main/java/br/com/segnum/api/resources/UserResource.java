@@ -16,6 +16,7 @@ import br.com.segnum.api.repositories.CommentaryRepository;
 import br.com.segnum.api.repositories.EventRepository;
 import br.com.segnum.api.repositories.LocationRepository;
 import br.com.segnum.api.repositories.VoteRepository;
+import br.com.segnum.api.security.UserSS;
 import br.com.segnum.api.services.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -151,6 +152,14 @@ public class UserResource {
                 .map(obj -> new CommentaryUserDTO(obj)).collect(Collectors.toList());
 
         return ResponseEntity.ok().body(commentariesDTO);
+    }
+
+    @RequestMapping(value="myself", method=RequestMethod.GET)
+    public ResponseEntity<UserDTO> getMySelf() {
+        UserSS userSS = UserService.authenticated();
+        User user = service.find(userSS.getId());
+        UserDTO dto = new UserDTO(user);
+        return ResponseEntity.ok().body(dto);
     }
 
     @RequestMapping(value="login", method=RequestMethod.POST)
