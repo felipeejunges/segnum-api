@@ -50,6 +50,7 @@ public class UserDTO {
         this.id = user.getId();
         this.name = user.getName();
         this.phone = user.getPhone();
+        this.email = user.getEmail();
         this.birthday = user.getBirthday();
         this.profilesEnumToDto(user.getProfiles());
     }
