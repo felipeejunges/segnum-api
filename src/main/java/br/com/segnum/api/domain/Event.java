@@ -1,6 +1,7 @@
 package br.com.segnum.api.domain;
 
 import br.com.segnum.api.domain.enums.Profile;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.persistence.*;
@@ -31,6 +32,9 @@ public class Event implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private EventType eventType;
+
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
+    private Date created_at;
 
     @ManyToOne
     @JoinColumn
@@ -64,6 +68,16 @@ public class Event implements Serializable {
         this.eventType = eventType;
     }
 
+    public Event(int id, String name, String description, EventType eventType, User user, Date created_at) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.user = user;
+        this.eventType = eventType;
+        this.created_at = created_at;
+    }
+
     public Event(int id, String name, String description, EventType eventType, Location location, User user) {
         super();
         this.id = id;
@@ -72,6 +86,7 @@ public class Event implements Serializable {
         this.location = location;
         this.user = user;
         this.eventType = eventType;
+        this.created_at = created_at;
     }
 
     public int getId() {
@@ -136,5 +151,13 @@ public class Event implements Serializable {
 
     public void setEventType(EventType eventType) {
         this.eventType = eventType;
+    }
+
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
     }
 }

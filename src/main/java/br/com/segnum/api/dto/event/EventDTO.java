@@ -5,8 +5,10 @@ import br.com.segnum.api.domain.User;
 import br.com.segnum.api.dto.eventType.EventTypeSimplifyDTO;
 import br.com.segnum.api.dto.location.LocationSimplifyDTO;
 import br.com.segnum.api.dto.user.UserSimplifyDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 
 public class EventDTO {
 
@@ -18,6 +20,8 @@ public class EventDTO {
     private UserSimplifyDTO user;
     private EventTypeSimplifyDTO eventTypeDTO;
     private LocationSimplifyDTO locationDTO;
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
+    private Date created_at;
 
     public EventDTO() {
     }
@@ -40,6 +44,7 @@ public class EventDTO {
         this.id = event.getId();
         this.name = event.getName();
         this.description = event.getDescription();
+        this.created_at = event.getCreated_at();
         if (event.getUser() != null) this.user = new UserSimplifyDTO(event.getUser());
         if (event.getLocation() != null) this.locationDTO = new LocationSimplifyDTO(event.getLocation());
         if (event.getEventType() != null) this.eventTypeDTO = new EventTypeSimplifyDTO(event.getEventType());
@@ -91,5 +96,13 @@ public class EventDTO {
 
     public void setEventTypeDTO(EventTypeSimplifyDTO eventTypeDTO) {
         this.eventTypeDTO = eventTypeDTO;
+    }
+
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
     }
 }

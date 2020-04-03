@@ -10,6 +10,7 @@ import br.com.segnum.api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +30,7 @@ public class EventService {
 
     public Event insert(Event obj) {
         obj.setId(0);
+        obj.setCreated_at(new Date());
 //        userRepository.save(obj.getUser());
 //        eventTypeRepository.save(obj.getEventType());
         obj = repo.save(obj);
@@ -73,7 +75,7 @@ public class EventService {
     public Event fromDTO(EventNewSimplifyDTO dto) {
         User user = userRepository.findById(dto.getUserId()).get();
         EventType eventType = eventTypeRepository.findById(dto.getEventTypeId()).get();
-        Event event = new Event(0, dto.getName(), dto.getDescription(), eventType, user);
+        Event event = new Event(0, dto.getName(), dto.getDescription(), eventType, user, null);
         return event;
     }
 }
