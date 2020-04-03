@@ -71,8 +71,8 @@ public class UserService {
 
     public User loginWithouJWT(CredentialsDTO credentialsDTO) {
         User user = repo.findByEmail(credentialsDTO.getEmail());
-//        if (pe.matches(credentialsDTO.getPassword(), user.getPassword())) user = null;
-        if(user.getPassword() != credentialsDTO.getPassword()) user = null;
+        if (!pe.matches(credentialsDTO.getPassword(), user.getPassword())) user = null;
+//        if(!user.getPassword().equals(credentialsDTO.getPassword())) user = null;
         return user;
     }
 }
