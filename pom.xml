@@ -10,9 +10,9 @@
     </parent>
     <groupId>br.com.segnum</groupId>
     <artifactId>api</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.1-SNAPSHOT</version>
     <name>Segnum API</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Segnum API</description>
     <packaging>jar</packaging>
 
     <properties>
