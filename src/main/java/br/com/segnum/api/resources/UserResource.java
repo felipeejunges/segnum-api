@@ -119,13 +119,13 @@ public class UserResource {
     }
 
     @RequestMapping(value="{id}/events", method= RequestMethod.GET)
-    public ResponseEntity<List<EventSimplifyDTO>> myEvents(@PathVariable int id) {
+    public ResponseEntity<List<EventDTO>> myEvents(@PathVariable int id) {
         User user = service.find(id);
 
         List<Event> events = eventRepository.findByUser(user);
 
-        List<EventSimplifyDTO> eventsDTO = events.stream()
-                .map(obj -> new EventSimplifyDTO(obj)).collect(Collectors.toList());
+        List<EventDTO> eventsDTO = events.stream()
+                .map(obj -> new EventDTO(obj)).collect(Collectors.toList());
 
         return ResponseEntity.ok().body(eventsDTO);
     }
